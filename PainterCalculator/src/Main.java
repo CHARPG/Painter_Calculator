@@ -23,6 +23,7 @@ public class Main {
 
         //calculate how much paint you will need (1 litre is 6.5 meters of wall) and round to the next int
         double paint = Math.ceil(surfaceArea/6.5) * coats;
+
         double price = paint * 6;
         //print the total amount of paint needed, the price and amount of coats
         System.out.println("You will need " + paint + " litres of paint\nThis will roughly cost £" + price  + " for " + coats + " coats of paint.");
