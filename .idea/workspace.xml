@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="276f2c46-fa36-4145-8ebc-62e67d5507fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PainterCalculator/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/PainterCalculator/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Painter_Calculator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Painter_Calculator/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
