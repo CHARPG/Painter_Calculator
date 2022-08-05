@@ -64,8 +64,14 @@ public class Main {
             surfaceArea = circleSA(i);
         }
 
-        System.out.println("Does this wall have a window, door or plug socket?");
-        String ans = reader.next();
+        System.out.println("Does this wall have a window, door or plug socket? YES/NO");
+        String ans = reader.next().toUpperCase();
+
+        while(!ans.equals("YES") && !ans.equals("NO"))
+        {
+            System.out.println("I do not recognise that input. Please try again");
+            ans = reader.next().toUpperCase();
+        }
 
         if(ans.toUpperCase().equals("YES"))
         {
@@ -91,7 +97,7 @@ public class Main {
             //calc the needed paint
             calculatePaint(surfaceArea - surfaceAreaExtra, coatsTemp, i);
         }
-        else
+        else if (ans.toUpperCase().equals("NO"))
         {
             int coatsTemp = coatsReq();
             //calculate the total surface area of the wall
