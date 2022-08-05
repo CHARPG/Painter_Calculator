@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-
 public class Main {
     //create lists to store and reorganise data used throughout the program for calculations
     static ArrayList<Float> surfaceAreas = new ArrayList<Float>();
@@ -43,12 +42,27 @@ public class Main {
     }
     public static void calculateSurfaceArea(int i)
     {
-        System.out.println("Please enter wall " + i + " width in meters");
-        //read input for width
-        float width = reader.nextFloat();
-        System.out.println("Please enter wall " + i + " height in meters");
-        //read input for height
-        float height = reader.nextFloat();
+        float surfaceArea = 0;
+
+        //get input for shape of wall
+        System.out.println("Is wall " + i + ":\nSquare/Rectangular\nTriangular\nCircular");
+        String ansShape = reader.next().toLowerCase();
+
+        //error checker
+        while(!ansShape.equals("square") && !ansShape.equals("rectangular") && !ansShape.equals("triangular") && !ansShape.equals("circular"))
+        {
+            System.out.println("I do not recognise that shape. Please try again");
+            ansShape = reader.next().toLowerCase();
+        }
+
+        //check ans to determine shape of wall
+        if (ansShape.toLowerCase().equals("square") || ansShape.toLowerCase().equals("rectangular")) {
+            surfaceArea = squareSA(i);
+        } else if (ansShape.toLowerCase().equals("triangular")) {
+            surfaceArea = triangleSA(i);
+        } else if (ansShape.toLowerCase().equals("circular")) {
+            surfaceArea = circleSA(i);
+        }
 
         System.out.println("Does this wall have a window, door or plug socket?");
         String ans = reader.next();
@@ -73,20 +87,53 @@ public class Main {
             }
             int coatsTemp = coatsReq();
             //calc surface area removing the missing space
-            surfaceAreas.add((width * height) - surfaceAreaExtra);
+            surfaceAreas.add(surfaceArea - surfaceAreaExtra);
             //calc the needed paint
-            calculatePaint((width * height) -surfaceAreaExtra, coatsTemp, i);
+            calculatePaint(surfaceArea - surfaceAreaExtra, coatsTemp, i);
         }
         else
         {
             int coatsTemp = coatsReq();
             //calculate the total surface area of the wall
-            float surfaceArea = width * height;
+
             //add surface area to list
             surfaceAreas.add(surfaceArea);
             //calc amount of paint needed
             calculatePaint(surfaceArea, coatsTemp, i);
         }
+    }
+    public static float squareSA(int i)
+    {
+        System.out.println("Please enter wall " + i + " width in meters");
+        //read input for width
+        float width = reader.nextFloat();
+        System.out.println("Please enter wall " + i + " height in meters");
+        //read input for height
+        float height = reader.nextFloat();
+        float surfaceArea = width * height;
+
+        return surfaceArea;
+    }
+    public static float triangleSA(int i)
+    {
+        System.out.println("Please enter wall " + i + " base in meters");
+        //read input for base
+        float width = reader.nextFloat();
+        System.out.println("Please enter wall " + i + " height in meters");
+        //read input for height
+        float height = reader.nextFloat();
+
+        float surfaceArea = 0.5f * width * height;
+        return surfaceArea;
+    }
+    public static float circleSA(int i)
+    {
+        System.out.println("Please enter wall " + i + " radius in meters");
+        //read input for radius
+        float radius = reader.nextFloat();
+        double surfaceArea = radius * radius * Math.PI;
+        float surfaceAreaCalc = (float)surfaceArea;
+        return surfaceAreaCalc;
     }
     public static void calculatePaint(float surfaceArea, int coats, int i)
     {
